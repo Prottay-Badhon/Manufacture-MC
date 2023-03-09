@@ -1,0 +1,57 @@
+
+[
+    {
+        "name": "Drill press",
+         "image": "./images/banner1.jpg",
+         "min_order_quantity": 50,
+         "available_quantity": 15000,
+         "price": 99,
+         "description": "short description"
+
+    },
+    {
+        "name": "Drill press",
+         "image": "./images/banner1.jpg",
+         "min_order_quantity": 50,
+         "available_quantity": 15000,
+         "price": 99,
+         "description": "short description"
+
+    },
+    {
+        "name": "Drill press",
+         "image": "./images/banner1.jpg",
+         "min_order_quantity": 50,
+         "available_quantity": 15000,
+         "price": 99,
+         "description": "short description"
+
+    },
+    {
+        "name": "Drill press",
+         "image": "./images/banner1.jpg",
+         "min_order_quantity": 50,
+         "available_quantity": 15000,
+         "price": 99,
+         "description": "short description"
+
+    },
+    {
+        "name": "Drill press",
+         "image": "./images/banner1.jpg",
+         "min_order_quantity": 50,
+         "available_quantity": 15000,
+         "price": 99,
+         "description": "short description"
+
+    },
+    {
+        "name": "Drill press",
+         "image": "./images/banner1.jpg",
+         "min_order_quantity": 50,
+         "available_quantity": 15000,
+         "price": 99,
+         "description": "short description"
+
+    }
+]
