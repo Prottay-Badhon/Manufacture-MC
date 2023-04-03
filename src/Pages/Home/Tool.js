@@ -2,6 +2,7 @@ import React from "react";
 import {Link} from "react-router-dom"
 const Tool = ({ tool }) => {
   const {
+    id,
     name,
     image,
     price,
@@ -34,7 +35,7 @@ const Tool = ({ tool }) => {
           Price: $<span className="text-primary font-bold">{price}</span>
         </p>
         <div className="card-actions justify-start">
-          <Link to="/purchase"><button className="btn btn-primary">Buy Now</button></Link>
+          <Link to={`/buyNow/${id}`}><button className="btn btn-primary">Buy Now</button></Link>
         </div>
       </div>
     </div>
