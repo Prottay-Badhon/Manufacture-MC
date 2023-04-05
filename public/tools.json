@@ -1,7 +1,6 @@
 
 [
     {
-        "id":1,
         "name": "Drill press",
          "image": "./images/banner1.jpg",
          "min_order_quantity": 50,
@@ -11,7 +10,6 @@
 
     },
     {
-        "id":2,
         "name": "Drill press",
          "image": "./images/banner1.jpg",
          "min_order_quantity": 50,
@@ -21,7 +19,6 @@
 
     },
     {
-        "id":3,
         "name": "Drill press",
          "image": "./images/banner1.jpg",
          "min_order_quantity": 50,
@@ -31,7 +28,6 @@
 
     },
     {
-        "id":4,
         "name": "Drill press",
          "image": "./images/banner1.jpg",
          "min_order_quantity": 50,
@@ -41,7 +37,6 @@
 
     },
     {
-        "id":5,
         "name": "Drill press",
          "image": "./images/banner1.jpg",
          "min_order_quantity": 50,
@@ -51,7 +46,6 @@
 
     },
     {
-        "id":6,
         "name": "Drill press",
          "image": "./images/banner1.jpg",
          "min_order_quantity": 50,

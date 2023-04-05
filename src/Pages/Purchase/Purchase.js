@@ -7,13 +7,12 @@ import { useForm } from "react-hook-form";
 
 const Purchase = () => {
   const [user, loading, error] = useAuthState(auth);
+  const [product,setProduct]= useState({})
+  const [minq,setMinq]=useState(0)
   const [tools,setTools]=useTools();
   const {id}=useParams();
-  const product =   tools.filter(async tool => await tool.id==id)
-    
-console.log(product)
   const initialValues={
-    quantity: product[0]?.min_order_quantity
+    quantity:minq,
   }
   const {
     register,
@@ -25,6 +24,18 @@ console.log(product)
     console.log(data);
     reset();
  }
+  useEffect(()=>{
+    const url = `http://localhost:5000/purchase/${id}`
+    fetch(url)
+    .then(res=> res.json())
+    .then(data =>{
+      setProduct(data)
+      setMinq(data.min_order_quantity)
+      
+    })
+  },[reset])
+ 
+  
   return (
     <div className="py-5 w-100">
       <form action="" onSubmit={handleSubmit(submitHandler)} className="flex flex-col items-center">
@@ -35,7 +46,7 @@ console.log(product)
           </label>
           <input
             type="text"
-            value={product[0]?.name}
+            value={product?.name}
             disabled
             className="input input-bordered w-full max-w-xs"
           />
@@ -48,7 +59,7 @@ console.log(product)
           <input
             type="text"
             placeholder="Type here"
-            value={product[0]?.price}
+            value={product?.price}
             disabled
             className="input input-bordered w-full max-w-xs"
           />
@@ -61,7 +72,7 @@ console.log(product)
           <input
             type="text"
             placeholder="Type here"
-            value={product[0]?.available_quantity}
+            value={product?.available_quantity}
             disabled
             className="input input-bordered w-full max-w-xs"
           />
@@ -73,7 +84,7 @@ console.log(product)
           <input
             type="text"
             placeholder="Type order quantity"
-            defaultValue={product[0]?.min_order_quantity}
+            defaultValue={product?.min_order_quantity}
             className="input input-bordered w-full max-w-xs"
             disabled
           />
@@ -101,12 +112,12 @@ console.log(product)
                 message: "Quantity is required",
               },
               min:{
-                value: product[0]?.min_order_quantity,
+                value: product?.min_order_quantity,
                 message: "Order the minimum quantity"
 
               },
               max:{
-                value: product[0]?.available_quantity,
+                value: product?.available_quantity,
                 message: "Order less available quantity"
 
               }

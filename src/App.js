@@ -15,6 +15,8 @@ import MyOrder from './Pages/Dashboard/MyOrder';
 import MyProfile from './Pages/Dashboard/MyProfile';
 import AddReview from './Pages/Dashboard/AddReview';
 import SignUp from './SignUp/SignUp';
+import ForgetPassword from './Login/ForgetPassword';
+import Profile from './Login/Profile';
 function App() {
   return (
     <div className="">
@@ -27,7 +29,10 @@ function App() {
             <Route path="/buyNow/:id" element={<RequireAuth>
              <Purchase></Purchase>
             </RequireAuth>}>
-
+            </Route>
+            <Route path="/profile" element={<RequireAuth>
+             <Profile></Profile>
+            </RequireAuth>}>
             </Route>
             <Route path="/dashboard" element={<RequireAuth>
               <Dashboard></Dashboard>
@@ -38,6 +43,7 @@ function App() {
             </Route>
             <Route path='/blog' element={<Blog></Blog>}></Route>
             <Route path='/login' element={<Login></Login>}></Route>
+            <Route path='/forgetPassword' element={<ForgetPassword></ForgetPassword>}></Route>
             <Route path='/signUp' element={<SignUp></SignUp>}></Route>
       </Routes>
       <Footer></Footer>

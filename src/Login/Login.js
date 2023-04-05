@@ -100,7 +100,7 @@ const Login = () => {
               })}
             />
           </div>
-          <p className="text-right text-blue-500 mt-1">Forgot password?</p>
+          <p className="text-right text-blue-500 mt-1"><Link to="/forgetPassword">Forgot password?</Link></p>
           <div className="flex justify-center w-full">
             <p className="mt-1">Not registered?</p>
             <p className="text-blue-500 mt-1 text-right"><Link to="/signUp">Create an account</Link></p>

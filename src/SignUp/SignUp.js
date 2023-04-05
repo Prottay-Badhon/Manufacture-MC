@@ -8,7 +8,7 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import auth from "../firebase.init";
-import { useCreateUserWithEmailAndPassword, useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
+import { useCreateUserWithEmailAndPassword, useSignInWithEmailAndPassword, useUpdateProfile } from "react-firebase-hooks/auth";
 import Loading from "../Shared/Loading";
 
 const SignUp = () => {
@@ -19,20 +19,26 @@ const SignUp = () => {
         loading,
         error,
       ] = useCreateUserWithEmailAndPassword(auth);
+      const [updateProfile, updating, errorUp] = useUpdateProfile(auth);
   const {
     register,
     handleSubmit,
     formState: { errors },
     reset
   } = useForm();
-  const onSubmit = (data) => {
+  const onSubmit =async (data) => {
     console.log(data);
-    createUserWithEmailAndPassword(data.email,data.password);
-    reset();
+   await createUserWithEmailAndPassword(data.email,data.password);
+    const success = await updateProfile({ displayName: data.username });
+   if(success){
     navigate("/");
+   }
   };
+  if(updating){
+   return <Loading></Loading>
+  }
   if(loading){
-    <Loading></Loading>
+   return <Loading></Loading>
   }
   return (
     <div className="flex flex-col items-center my-8">
@@ -142,7 +148,7 @@ const SignUp = () => {
               </p>
             </div>
             {
-                error && <p className="text-red-500">{error.message}</p>
+                (error || errorUp) && <p className="text-red-500">{error.message || errorUp.message}</p>
             }
             <div className="form-control w-full max-w-xs mt-4">
               <button
