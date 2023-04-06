@@ -4,7 +4,9 @@ import auth from "../../firebase.init";
 import { useParams } from "react-router-dom";
 import useTools from "../../Hooks/useTools";
 import { useForm } from "react-hook-form";
-
+import axios from "axios";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const Purchase = () => {
   const [user, loading, error] = useAuthState(auth);
   const [product,setProduct]= useState({})
@@ -22,7 +24,27 @@ const Purchase = () => {
   } = useForm({ defaultValues: initialValues });
  const submitHandler=async(data)=>{
     console.log(data);
-    reset();
+    const order={
+        id: id,
+        product: product?.name,
+        singlePrice: product?.price,
+        available_quantity: product?.available_quantity,
+        quantity: data.quantity,
+        email: user?.email,
+        phone: data.phone,
+        shipping: data.shippingAddress,
+        shippingCost:  1000,
+        
+    }
+      axios.post('http://localhost:5000/order',order)
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+      reset();
+      toast("Thanks for order.Please payment order.");
  }
   useEffect(()=>{
     const url = `http://localhost:5000/purchase/${id}`
@@ -33,11 +55,13 @@ const Purchase = () => {
       setMinq(data.min_order_quantity)
       
     })
-  },[reset])
+  },[product])
  
+  
   
   return (
     <div className="py-5 w-100">
+      <ToastContainer></ToastContainer>
       <form action="" onSubmit={handleSubmit(submitHandler)} className="flex flex-col items-center">
         <div className="form-control lg:w-[800px] w-full max-w-xs">
           <label className="label">

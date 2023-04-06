@@ -76,7 +76,7 @@ const Navbar = () => {
            <li>
               <div className="avatar online placeholder">
                 <div className="bg-neutral-focus text-neutral-content rounded-full w-12">
-                  <span className="text-xl">{user.displayName.slice(0,2)}</span>
+                  <span className="text-xl">{user?.displayName?.slice(0,2)}</span>
                 </div>
                 </div>
             </li>
